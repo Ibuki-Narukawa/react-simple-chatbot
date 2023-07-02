@@ -51,7 +51,8 @@ class ChatBot extends Component {
       inputInvalid: false,
       speaking: false,
       recognitionEnable: props.recognitionEnable && Recognition.isSupported(),
-      defaultUserSettings: {}
+      defaultUserSettings: {},
+      numRows: 1
     };
 
     this.speak = speakFn(props.speechSynthesis);
@@ -205,7 +206,17 @@ class ChatBot extends Component {
   };
 
   onValueChange = event => {
-    this.setState({ inputValue: event.target.value });
+    const numLines = (event.target.value.match(/\n/g) || []).length;
+    if (numLines < 5) {
+      this.setState({
+        inputValue: event.target.value,
+        numRows: numLines + 1
+      });
+    } else {
+      this.setState({
+        inputValue: event.target.value
+      });
+    }
   };
 
   getTriggeredStep = (trigger, value) => {
@@ -423,7 +434,7 @@ class ChatBot extends Component {
   };
 
   handleKeyPress = event => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !event.shiftKey) {
       this.submitUserMessage();
     }
   };
@@ -596,7 +607,8 @@ class ChatBot extends Component {
       opened,
       renderedSteps,
       speaking,
-      recognitionEnable
+      recognitionEnable,
+      numRows
     } = this.state;
     const {
       className,
@@ -685,7 +697,7 @@ class ChatBot extends Component {
           <Footer className="rsc-footer" style={footerStyle}>
             {!currentStep.hideInput && (
               <Input
-                type="textarea-narukawa"
+                type="textarea"
                 style={inputStyle}
                 ref={this.setInputRef}
                 className="rsc-input"
@@ -697,6 +709,7 @@ class ChatBot extends Component {
                 invalid={inputInvalid}
                 disabled={disabled}
                 hasButton={!hideSubmitButton}
+                rows={numRows}
                 {...inputAttributesOverride}
               />
             )}
