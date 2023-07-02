@@ -214,7 +214,8 @@ class ChatBot extends Component {
       });
     } else {
       this.setState({
-        inputValue: event.target.value
+        inputValue: event.target.value,
+        numRows: 5
       });
     }
   };
@@ -476,7 +477,8 @@ class ChatBot extends Component {
           renderedSteps,
           previousSteps,
           disabled: true,
-          inputValue: ''
+          inputValue: '',
+          numRows: 1
         },
         () => {
           if (this.input) {
