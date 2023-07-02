@@ -21,6 +21,11 @@ const SubmitButton = styled.button`
   opacity: ${props => (props.disabled && !props.invalid ? '.5' : '1')};
   outline: none;
   padding: 14px 16px 12px 16px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
+
   &:before {
     content: '';
     position: absolute;
