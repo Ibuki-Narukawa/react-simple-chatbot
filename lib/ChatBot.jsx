@@ -715,7 +715,13 @@ class ChatBot extends Component {
                 {...inputAttributesOverride}
               />
             )}
-            <div style={controlStyle} className="rsc-controls">
+            <div
+              style={{
+                ...controlStyle,
+                position: 'relative'
+              }}
+              className="rsc-controls"
+            >
               {!currentStep.hideInput && !currentStep.hideExtraControl && customControl}
               {!currentStep.hideInput && !hideSubmitButton && (
                 <SubmitButton

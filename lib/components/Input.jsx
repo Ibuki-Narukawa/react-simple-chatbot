@@ -24,6 +24,7 @@ const Input = styled.textarea`
   overflow-wrap: break-word;
   white-space: pre-wrap;
   -webkit-appearance: none;
+  flex-grow: 1;
 
   &:disabled {
     background: #fff;
