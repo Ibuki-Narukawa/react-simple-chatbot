@@ -21,6 +21,8 @@ const Input = styled.textarea`
   outline: none;
   padding: ${props => (props.hasButton ? '16px 52px 16px 10px' : '16px 10px')};
   width: 100%;
+  overflowwrap: 'break-word';
+  whitespace: 'pre-wrap';
   -webkit-appearance: none;
 
   &:disabled {
