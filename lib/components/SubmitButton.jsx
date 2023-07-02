@@ -22,7 +22,7 @@ const SubmitButton = styled.button`
   outline: none;
   padding: 14px 16px 12px 16px;
   position: absolute;
-  bottom: 2px;
+  bottom: 3px;
   right: 0px;
 
   &:before {
