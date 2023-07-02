@@ -206,8 +206,9 @@ class ChatBot extends Component {
   };
 
   onValueChange = event => {
+    const maxNumLines = 7;
     const numLines = (event.target.value.match(/\n/g) || []).length;
-    if (numLines < 5) {
+    if (numLines < maxNumLines) {
       this.setState({
         inputValue: event.target.value,
         numRows: numLines + 1
@@ -215,7 +216,7 @@ class ChatBot extends Component {
     } else {
       this.setState({
         inputValue: event.target.value,
-        numRows: 5
+        numRows: maxNumLines
       });
     }
   };
