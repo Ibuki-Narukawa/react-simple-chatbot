@@ -184,7 +184,7 @@ class ChatBot extends Component {
         behavior: 'smooth'
       });
     } else {
-      target.scrollTop = target.scrollHeight;
+      // target.scrollTop = target.scrollHeight;
     }
   };
 
