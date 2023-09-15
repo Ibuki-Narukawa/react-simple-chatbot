@@ -1,7 +1,7 @@
 import { invalidInput } from '../common/animations';
 import styled, { css } from 'styled-components';
 
-const Input = styled.input`
+const Input = styled.textarea`
   animation: ${props =>
     props.invalid
       ? css`
@@ -21,7 +21,10 @@ const Input = styled.input`
   outline: none;
   padding: ${props => (props.hasButton ? '16px 52px 16px 10px' : '16px 10px')};
   width: 100%;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   -webkit-appearance: none;
+  flex-grow: 1;
 
   &:disabled {
     background: #fff;

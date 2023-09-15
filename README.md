@@ -1,7 +1,7 @@
-# React Simple Chatbot
+# React Simple Chatbot Narukawa
 
 <a href="https://travis-ci.org/LucasBassetti/react-simple-chatbot"><img src="https://travis-ci.org/LucasBassetti/react-simple-chatbot.svg?branch=master" alt="Travis CI" /></a> <a href="https://badge.fury.io/js/react-simple-chatbot"><img src="https://badge.fury.io/js/react-simple-chatbot.svg" alt="npm version"></a>
-  <img src="https://codecov.io/gh/LucasBassetti/react-simple-chatbot/branch/master/graph/badge.svg" alt="Codecov" />
+<img src="https://codecov.io/gh/LucasBassetti/react-simple-chatbot/branch/master/graph/badge.svg" alt="Codecov" />
 </a> <a href="https://beerpay.io/LucasBassetti/react-simple-chatbot"><img src="https://beerpay.io/LucasBassetti/react-simple-chatbot/badge.svg?style=flat" /></a>
 
 A simple chatbot component to create conversation chats
@@ -18,20 +18,20 @@ npm install react-simple-chatbot --save
 
 There are several examples on the [website](http://lucasbassetti.com.br/react-simple-chatbot). Here is the first one to get you started:
 
-``` javascript
+```javascript
 import ChatBot from 'react-simple-chatbot';
 
 const steps = [
   {
     id: '0',
     message: 'Welcome to react chatbot!',
-    trigger: '1',
+    trigger: '1'
   },
   {
     id: '1',
     message: 'Bye!',
-    end: true,
-  },
+    end: true
+  }
 ];
 
 ReactDOM.render(
@@ -64,9 +64,9 @@ Please check the [contributing guide](https://github.com/LucasBassetti/react-sim
 
 ## Authors
 
-| ![Lucas Bassetti](https://avatars3.githubusercontent.com/u/1014326?v=3&s=150)|
-|:---------------------:|
-|  [Lucas Bassetti](https://github.com/LucasBassetti/)   |
+| ![Lucas Bassetti](https://avatars3.githubusercontent.com/u/1014326?v=3&s=150) |
+| :---------------------------------------------------------------------------: |
+|              [Lucas Bassetti](https://github.com/LucasBassetti/)              |
 
 See also the list of [contributors](https://github.com/LucasBassetti/react-simple-chatbot/contributors) who participated in this project.
 

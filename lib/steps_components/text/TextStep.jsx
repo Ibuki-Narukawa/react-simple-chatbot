@@ -31,7 +31,11 @@ class TextStep extends Component {
     const { previousValue, step } = this.props;
     const { message } = step;
 
-    return message ? message.replace(/{previousValue}/g, previousValue) : '';
+    let finalMessage = message ? message.replace(/{previousValue}/g, previousValue) : '';
+    // \n を <br /> に置き換える
+    finalMessage = finalMessage.replace(/\n/g, '<br />');
+
+    return finalMessage;
   };
 
   renderMessage = () => {
@@ -47,7 +51,8 @@ class TextStep extends Component {
       });
     }
 
-    return this.getMessage();
+    // getMessage から取得したメッセージを HTML としてレンダリング
+    return <span dangerouslySetInnerHTML={{ __html: this.getMessage() }} />;
   };
 
   render() {
@@ -65,7 +70,7 @@ class TextStep extends Component {
 
     const showAvatar = user ? !hideUserAvatar : !hideBotAvatar;
 
-    const imageAltText = user ? "Your avatar" : `${botName}'s avatar`;
+    const imageAltText = user ? 'Your avatar' : `${botName}'s avatar`;
 
     return (
       <TextStepContainer className={`rsc-ts ${user ? 'rsc-ts-user' : 'rsc-ts-bot'}`} user={user}>

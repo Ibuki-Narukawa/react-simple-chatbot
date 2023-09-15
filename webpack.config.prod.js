@@ -15,13 +15,13 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        sourceMap: true,
         terserOptions: {
+          sourceMap: true,
           output: {
-            comments: false,
+            comments: false
           }
-        },
-      }),
+        }
+      })
     ]
   },
   output: {
@@ -37,7 +37,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    process.env.BUNDLE_ANALYZE === 'true' ? new BundleAnalyzerPlugin() : () => { }
+    process.env.BUNDLE_ANALYZE === 'true' ? new BundleAnalyzerPlugin() : () => {}
   ],
   module: {
     rules: [

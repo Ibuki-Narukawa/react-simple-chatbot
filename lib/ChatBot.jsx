@@ -51,7 +51,8 @@ class ChatBot extends Component {
       inputInvalid: false,
       speaking: false,
       recognitionEnable: props.recognitionEnable && Recognition.isSupported(),
-      defaultUserSettings: {}
+      defaultUserSettings: {},
+      numRows: 1
     };
 
     this.speak = speakFn(props.speechSynthesis);
@@ -183,7 +184,7 @@ class ChatBot extends Component {
         behavior: 'smooth'
       });
     } else {
-      target.scrollTop = target.scrollHeight;
+      // target.scrollTop = target.scrollHeight;
     }
   };
 
@@ -205,7 +206,19 @@ class ChatBot extends Component {
   };
 
   onValueChange = event => {
-    this.setState({ inputValue: event.target.value });
+    const maxNumLines = 7;
+    const numLines = (event.target.value.match(/\n/g) || []).length;
+    if (numLines < maxNumLines) {
+      this.setState({
+        inputValue: event.target.value,
+        numRows: numLines + 1
+      });
+    } else {
+      this.setState({
+        inputValue: event.target.value,
+        numRows: maxNumLines
+      });
+    }
   };
 
   getTriggeredStep = (trigger, value) => {
@@ -423,7 +436,7 @@ class ChatBot extends Component {
   };
 
   handleKeyPress = event => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !event.shiftKey) {
       this.submitUserMessage();
     }
   };
@@ -465,7 +478,8 @@ class ChatBot extends Component {
           renderedSteps,
           previousSteps,
           disabled: true,
-          inputValue: ''
+          inputValue: '',
+          numRows: 1
         },
         () => {
           if (this.input) {
@@ -596,7 +610,8 @@ class ChatBot extends Component {
       opened,
       renderedSteps,
       speaking,
-      recognitionEnable
+      recognitionEnable,
+      numRows
     } = this.state;
     const {
       className,
@@ -697,10 +712,17 @@ class ChatBot extends Component {
                 invalid={inputInvalid}
                 disabled={disabled}
                 hasButton={!hideSubmitButton}
+                rows={numRows}
                 {...inputAttributesOverride}
               />
             )}
-            <div style={controlStyle} className="rsc-controls">
+            <div
+              style={{
+                ...controlStyle,
+                position: 'relative'
+              }}
+              className="rsc-controls"
+            >
               {!currentStep.hideInput && !currentStep.hideExtraControl && customControl}
               {!currentStep.hideInput && !hideSubmitButton && (
                 <SubmitButton
